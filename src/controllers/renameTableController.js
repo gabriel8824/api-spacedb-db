@@ -18,7 +18,7 @@ async function renameTable(req, res) {
       }
     });
 
-    // Verifica se a tabela antiga existe
+    // Verifica se a tabela antiga existe 2
     const tableExists = await sequelize.queryInterface.showTableStatus(oldTableName);
 
     if (!tableExists) {
