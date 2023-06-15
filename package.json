@@ -9,10 +9,14 @@
   "scripts": {
     "start": "node app.js"
   },
-  "keywords": ["express", "database"],
+  "keywords": [
+    "express",
+    "database"
+  ],
   "author": "Gabriel Lenon",
   "license": "MIT",
   "dependencies": {
+    "cors": "^2.8.5",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
     "mysql2": "^3.3.5",
