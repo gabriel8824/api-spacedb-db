@@ -1,6 +1,7 @@
 const express = require('express');
 require('dotenv').config();
 const routes = require('./src/routes');
+const cors = require('cors');
 
 // Configurar as opções do CORS
 const corsOptions = {
