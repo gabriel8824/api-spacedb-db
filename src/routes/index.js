@@ -9,5 +9,6 @@ router.post('/verificar-conexao', verifyConnectionController);
 router.post('/criar-tabela', createTableController);
 router.post('/deletar-tabela/:tableName', deleteTableController);
 router.post('/listar-tabelas', listTablesController);
+router.post('/renomear-tabela/:oldTableName/:newTableName', renameTableController);
 
 module.exports = router;
