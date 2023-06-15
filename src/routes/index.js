@@ -4,6 +4,7 @@ const verifyConnectionController = require('../controllers/verifyConnectionContr
 const createTableController = require('../controllers/createTableController');
 const deleteTableController = require('../controllers/deleteTableController');
 const listTablesController = require('../controllers/listTablesController');
+const renameTableController = require('../controllers/renameTableController');
 
 router.post('/verificar-conexao', verifyConnectionController);
 router.post('/criar-tabela', createTableController);
