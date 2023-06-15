@@ -18,15 +18,18 @@ async function renameTable(req, res) {
       }
     });
 
-    // Verifica se a tabela antiga existe 2
-    const tableExists = await sequelize.queryInterface.showTableStatus(oldTableName);
+    const queryInterface = sequelize.getQueryInterface();
+
+    // Verifica se a tabela antiga existe
+    const tables = await queryInterface.showAllTables();
+    const tableExists = tables.includes(oldTableName);
 
     if (!tableExists) {
       return res.status(404).json({ error: 'A tabela antiga não existe' });
     }
 
     // Renomeia a tabela
-    await sequelize.queryInterface.renameTable(oldTableName, newTableName);
+    await queryInterface.renameTable(oldTableName, newTableName);
 
     res.json({ success: true, message: 'Tabela renomeada com sucesso!' });
   } catch (error) {
