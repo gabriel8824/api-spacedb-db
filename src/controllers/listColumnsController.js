@@ -21,7 +21,7 @@ async function listColumns(req, res) {
     // Obter as colunas da tabela
     const columns = await sequelize.queryInterface.describeTable(tableName);
 
-    res.json({ success: true, columns });
+    res.json(columns); // Retorna apenas o objeto "columns"
   } catch (error) {
     console.error('Erro ao obter as colunas da tabela:', error);
     res.status(500).json({ success: false, error: 'Erro ao obter as colunas da tabela' });
