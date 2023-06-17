@@ -21,15 +21,15 @@ async function listColumns(req, res) {
     // Obter as colunas da tabela
     const columns = await sequelize.queryInterface.describeTable(tableName);
 
-    // Adicionar o nome da coluna como uma propriedade adicional em cada objeto
-    const formattedColumns = {};
-    Object.keys(columns).forEach(columnName => {
+    // Adicionar a propriedade "nome" em cada coluna
+    const columnsWithNames = {};
+    for (const columnName in columns) {
       const column = columns[columnName];
       column.nome = columnName;
-      formattedColumns[columnName] = column;
-    });
+      columnsWithNames[columnName] = column;
+    }
 
-    res.json({ columns: formattedColumns });
+    res.json({ columns: columnsWithNames });
   } catch (error) {
     console.error('Erro ao obter as colunas da tabela:', error);
     res.status(500).json({ success: false, error: 'Erro ao obter as colunas da tabela' });
