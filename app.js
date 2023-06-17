@@ -7,7 +7,7 @@ const app = express();
 app.use(express.json());
 
 const corsOptions = {
-  origin: 'https://spacedb-3qwus3.flutterflow.app',
+  origin: 'https://beta.flutterflow.io/debug/huDYf4EbykDL97xbRc5M',
   optionsSuccessStatus: 200
 };
 
