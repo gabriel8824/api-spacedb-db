@@ -6,10 +6,17 @@ const cors = require('cors');
 const app = express();
 app.use(express.json());
 
-const corsOptions = {
-  origin: 'https://beta.flutterflow.io/debug/huDYf4EbykDL97xbRc5M',
-  optionsSuccessStatus: 200
-};
+const corsOptions = [
+  {
+    origin: 'https://spacedb-3qwus3.flutterflow.app',
+    optionsSuccessStatus: 200
+  },
+  {
+    origin: 'https://beta.flutterflow.io',
+    optionsSuccessStatus: 200
+  }
+];
+
 
 app.use(cors(corsOptions));
 app.use('/', routes);
