@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Documentação da API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .request-example {
+      background-color: #f5f5f5;
+      padding: 10px;
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Documentação da API</h1>
+
+  <h2>Introdução</h2>
+  <p>
+    Bem-vindo à documentação da API! Aqui você encontrará informações sobre os endpoints disponíveis e como utilizá-los para interagir com o sistema.
+  </p>
+
+  <h2>Criar Relacionamento</h2>
+  <p>
+    O endpoint <code>/api/create-relationship</code> permite criar um novo relacionamento entre tabelas no banco de dados.
+    Para utilizar este endpoint, faça uma requisição POST com os seguintes parâmetros:
+  </p>
+  <ul>
+    <li><strong>config</strong>: Configurações do banco de dados, incluindo host, port, username, password, database e dialect.</li>
+    <li><strong>fromTable</strong>: Nome da tabela de origem do relacionamento.</li>
+    <li><strong>toTable</strong>: Nome da tabela de destino do relacionamento.</li>
+    <li><strong>relationshipType</strong>: Tipo de relacionamento a ser criado.</li>
+  </ul>
+
+  <h3>Exemplo de Requisição</h3>
+  <pre class="request-example"><code>
+POST /api/create-relationship HTTP/1.1
+Content-Type: application/json
+
+{
+  "config": {
+    "host": "localhost",
+    "port": 5432,
+    "username": "admin",
+    "password": "secretpassword",
+    "database": "mydatabase",
+    "dialect": "postgres"
+  },
+  "fromTable": "users",
+  "toTable": "roles",
+  "relationshipType": "belongsTo"
+}
+  </code></pre>
+
+  <h2>Parâmetros de Configuração</h2>
+  <ul>
+    <li><strong>config</strong>: Configurações do banco de dados, incluindo host, port, username, password, database e dialect.</li>
+  </ul>
+
+  <h2>Parâmetros do Relacionamento</h2>
+  <ul>
+    <li><strong>fromTable</strong>: Nome da tabela de origem do relacionamento.</li>
+    <li><strong>toTable</strong>: Nome da tabela de destino do relacionamento.</li>
+    <li><strong>relationshipType</strong>: Tipo de relacionamento a ser criado. Os tipos disponíveis são:
+      <ul>
+        <li><strong>hasOne</strong>: Uma instância da tabela de origem possui uma única instância da tabela de destino.</li>
+        <li><strong>hasMany</strong>: Uma instância da tabela de origem possui várias instâncias da tabela de destino.</li>
+        <li><strong>belongsTo</strong>: Uma instância da tabela de origem pertence a uma única instância da tabela de destino.</li>
+        <li><strong>belongsToMany</strong>: Uma instância da tabela de origem pode pertencer a várias instâncias da tabela de destino e vice-versa.</li>
+      </ul>
+    </li>
+  </ul>
+
+  <h2>Resposta</h2>
+  <ul>
+    <li><strong>success</strong>: Indica se o relacionamento foi criado com sucesso.</li>
+    <li><strong>message</strong>: Mensagem de sucesso indicando que o relacionamento foi criado com sucesso.</li>
+  </ul>
+
+  <h2>Outros Endpoints</h2>
+  <p>
+    Esta API possui outros endpoints para realizar operações como criar tabelas, adicionar colunas e listar tabelas. Consulte a documentação completa para obter mais detalhes.
+  </p>
+</body>
+</html>

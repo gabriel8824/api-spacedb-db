@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Documentação da API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .request-example {
+      background-color: #f5f5f5;
+      padding: 10px;
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Documentação da API</h1>
+
+  <h2>Introdução</h2>
+  <p>
+    Bem-vindo à documentação da API! Aqui você encontrará informações sobre os endpoints disponíveis e como utilizá-los para interagir com o sistema.
+  </p>
+
+  <h2>Criar Coluna</h2>
+  <p>
+    O endpoint <code>/api/create-column</code> permite criar uma nova coluna em uma tabela existente no banco de dados.
+    Para utilizar este endpoint, faça uma requisição POST com os seguintes parâmetros:
+  </p>
+  <ul>
+    <li><strong>config</strong>: Objeto contendo as informações de configuração do banco de dados.</li>
+    <li><strong>table</strong>: Nome da tabela onde a coluna será criada.</li>
+    <li><strong>column</strong>: Objeto contendo as informações da coluna a ser criada.</li>
+  </ul>
+
+  <h3>Exemplo de Requisição</h3>
+  <pre class="request-example"><code>
+POST /api/create-column HTTP/1.1
+Content-Type: application/json
+
+{
+  "config": {
+    "host": "localhost",
+    "port": 5432,
+    "username": "admin",
+    "password": "secretpassword",
+    "database": "mydatabase",
+    "dialect": "postgres"
+  },
+  "table": "users",
+  "column": {
+    "name": "age",
+    "type": "integer",
+    "nullable": false,
+    "defaultValue": null,
+    "primaryKey": false,
+    "autoIncrement": false,
+    "unique": false,
+    "comment": "Idade do usuário",
+    "validate": {
+      "isInt": true,
+      "min": 0
+    }
+  }
+}
+  </code></pre>
+
+  <h3>Parâmetros da Coluna</h3>
+  <ul>
+    <li><strong>name</strong>: Nome da coluna.</li>
+    <li><strong>type</strong>: Tipo de dados da coluna. Tipos aceitos: text, integer, decimal, double, boolean, date, datetime, json, email, password.</li>
+    <li><strong>nullable</strong>: Indica se a coluna permite valores nulos (true/false).</li>
+    <li><strong>defaultValue</strong>: Valor padrão para a coluna.</li>
+    <li><strong>primaryKey</strong>: Indica se a coluna é uma chave primária (true/false).</li>
+    <li><strong>autoIncrement</strong>: Indica se a coluna possui incremento automático (true/false).</li>
+    <li><strong>unique</strong>: Indica se os valores da coluna devem ser únicos (true/false).</li>
+    <li><strong>comment</strong>: Comentário sobre a coluna.</li>
+    <li><strong>validate</strong>: Objeto contendo as opções de validação da coluna.</li>
+  </ul>
+
+  <h3>Opções de Validação</h3>
+  <p>
+    A opção <code>validate</code> permite especificar regras de validação para a coluna. Por exemplo, <code>{"isInt": true, "min": 0}</code> indica que o valor da coluna deve ser um número inteiro maior ou igual a zero.
+    Aqui estão algumas opções de validação disponíveis:
+  </p>
+  <ul>
+    <li><strong>isEmail</strong>: O valor deve ser um email válido.</li>
+    <li><strong>isURL</strong>: O valor deve ser uma URL válida.</li>
+    <li><strong>isIP</strong>: O valor deve ser um endereço IP válido.</li>
+    <li><strong>isInt</strong>: O valor deve ser um número inteiro.</li>
+    <li><strong>min</strong>: O valor mínimo permitido.</li>
+    <li><strong>max</strong>: O valor máximo permitido.</li>
+    <!-- Adicione outras opções de validação aqui -->
+  </ul>
+
+  <h2>Outros Endpoints</h2>
+  <p>
+    Esta API possui outros endpoints para realizar operações como atualizar, excluir e consultar dados no banco de dados. Consulte a documentação completa para obter mais detalhes.
+  </p>
+</body>
+</html>

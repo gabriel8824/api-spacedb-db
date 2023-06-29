@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Documentação da API</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.5;
+      padding: 20px;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin-bottom: 20px;
+    }
+
+    h2 {
+      font-size: 20px;
+      margin-top: 40px;
+      margin-bottom: 10px;
+    }
+
+    h3 {
+      font-size: 16px;
+      margin-top: 30px;
+      margin-bottom: 10px;
+    }
+
+    code {
+      background-color: #f5f5f5;
+      padding: 2px 4px;
+      font-size: 14px;
+      border-radius: 4px;
+    }
+
+    .request-example {
+      background-color: #f5f5f5;
+      padding: 10px;
+    }
+
+    ul {
+      margin-bottom: 20px;
+    }
+
+    li {
+      margin-bottom: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Documentação da API</h1>
+
+  <h2>Introdução</h2>
+  <p>
+    Bem-vindo à documentação da API! Aqui você encontrará informações sobre os endpoints disponíveis e como utilizá-los para interagir com o sistema.
+  </p>
+
+  <h2>Listar Colunas da Tabela</h2>
+  <p>
+    O endpoint <code>/api/list-columns/:tableName</code> permite obter as colunas de uma tabela específica no banco de dados.
+    Para utilizar este endpoint, faça uma requisição POST com os seguintes parâmetros:
+  </p>
+  <ul>
+    <li><strong>host</strong>: Host do banco de dados.</li>
+    <li><strong>port</strong>: Porta do banco de dados.</li>
+    <li><strong>username</strong>: Nome de usuário para acessar o banco de dados.</li>
+    <li><strong>password</strong>: Senha para acessar o banco de dados.</li>
+    <li><strong>database</strong>: Nome do banco de dados.</li>
+    <li><strong>dialect</strong>: Dialeto do banco de dados (por exemplo, "postgres" ou "mysql").</li>
+  </ul>
+
+  <h3>Exemplo de Requisição</h3>
+  <pre class="request-example"><code>
+POST /api/list-columns/users HTTP/1.1
+Content-Type: application/json
+
+{
+  "host": "localhost",
+  "port": 5432,
+  "username": "admin",
+  "password": "secretpassword",
+  "database": "mydatabase",
+  "dialect": "postgres"
+}
+  </code></pre>
+
+  <h2>Parâmetros de Configuração</h2>
+  <ul>
+    <li><strong>host</strong>: Host do banco de dados.</li>
+    <li><strong>port</strong>: Porta do banco de dados.</li>
+    <li><strong>username</strong>: Nome de usuário para acessar o banco de dados.</li>
+    <li><strong>password</strong>: Senha para acessar o banco de dados.</li>
+    <li><strong>database</strong>: Nome do banco de dados.</li>
+    <li><strong>dialect</strong>: Dialeto do banco de dados (por exemplo, "postgres" ou "mysql").</li>
+  </ul>
+
+  <h2>Resposta</h2>
+  <ul>
+    <li><strong>columns</strong>: Objeto contendo as colunas da tabela, com detalhes adicionais para cada coluna.</li>
+  </ul>
+
+  <h2>Detalhes Adicionais das Colunas</h2>
+  <ul>
+    <li><strong>nome</strong>: Nome da coluna.</li>
+    <li><strong>type</strong>: Tipo da coluna.</li>
+    <li><strong>allowNull</strong>: Indica se a coluna permite valores nulos.</li>
+    <li><strong>defaultValue</strong>: Valor padrão da coluna.</li>
+    <li><strong>primaryKey</strong>: Indica se a coluna é uma chave primária.</li>
+    <li><strong>autoIncrement</strong>: Indica se a coluna é autoincrementável.</li>
+    <li><strong>larguraMaxima</strong>: Largura máxima da coluna (apenas para colunas de texto).</li>
+  </ul>
+
+  <h2>Outros Endpoints</h2>
+  <p>
+    Esta API possui outros endpoints para realizar operações como criação, atualização, exclusão e consulta de dados no banco de dados. Consulte a documentação completa para obter mais detalhes.
+  </p>
+</body>
+</html>
